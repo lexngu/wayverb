@@ -86,7 +86,7 @@ set_property(TARGET sndfile PROPERTY IMPORTED_LOCATION ${DEPENDENCY_INSTALL_PREF
 ExternalProject_Add(
     samplerate_external
     DOWNLOAD_COMMAND ${GIT_EXECUTABLE} clone --depth 1 https://github.com/erikd/libsamplerate.git samplerate_external
-    PATCH_COMMAND ${GIT_EXECUTABLE} apply ${CMAKE_SOURCE_DIR}/config/fix_carbon.patch
+    #PATCH_COMMAND ${GIT_EXECUTABLE} apply ${CMAKE_SOURCE_DIR}/config/fix_carbon.patch
     CONFIGURE_COMMAND <SOURCE_DIR>/autogen.sh && <SOURCE_DIR>/configure --prefix=<INSTALL_DIR> --disable-dependency-tracking --enable-shared=no
     ${CUSTOM_MAKE_COMMAND}
 )
