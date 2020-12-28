@@ -15,7 +15,9 @@
 #include "audio_file/audio_file.h"
 
 #include <array>
-#include <experimental/optional>
+//#include <experimental/optional>
+// Already supported in Aplle clang.
+#include <optional>
 #include <iomanip>
 #include <iostream>
 #include <numeric>
