@@ -7,7 +7,7 @@
 
 #include "glm/glm.hpp"
 
-#include <experimental/optional>
+#include <optional>
 
 namespace wayverb {
 namespace core {
@@ -23,13 +23,13 @@ enum class direction { x, y, z };
 
 bool overlaps(const box& b, const triangle_vec3& t);
 
-std::experimental::optional<std::pair<float, float>> intersection_distances(
+std::optional<std::pair<float, float>> intersection_distances(
         const box& b, const ray& ray);
 
 /// Returns the shortest positive distance to the box from the ray.
 /// If the ray is inside the box, returns the positive distance to the
 /// nearest wall.
-std::experimental::optional<float> intersects(const box& b, const ray& ray);
+std::optional<float> intersects(const box& b, const ray& ray);
 
 /// Returns true if there is an intersection with the box within the interval
 /// (t0, t1) along the ray.

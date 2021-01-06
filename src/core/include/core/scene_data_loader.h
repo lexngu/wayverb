@@ -5,7 +5,7 @@
 #include "utilities/aligned/unordered_map.h"
 #include "utilities/map_to_vector.h"
 
-#include <experimental/optional>
+#include <optional>
 
 namespace wayverb {
 namespace core {
@@ -29,7 +29,7 @@ public:
     std::string get_extensions() const;
 
     using scene_data = generic_scene_data<cl_float3, std::string>;
-    const std::experimental::optional<scene_data>& get_scene_data() const;
+    const std::optional<scene_data>& get_scene_data() const;
 
 private:
     class impl;

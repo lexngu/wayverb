@@ -7,6 +7,8 @@ file(GLOB_RECURSE sources "src/*.cpp")
 file(GLOB_RECURSE public_headers "include/*.h")
 file(GLOB_RECURSE private_headers "src/*.h")
 
+set(CMAKE_CXX_STANDARD 17)
+
 add_library(core STATIC ${sources} ${public_headers} ${private_headers} ${outfile})
 
 add_dependencies(core glm_external opencl_cpp_external cereal_external)

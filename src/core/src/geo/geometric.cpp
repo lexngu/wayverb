@@ -19,7 +19,7 @@ glm::vec3 ray::get_direction() const { return direction_; }
 
 ////////////////////////////////////////////////////////////////////////////////
 
-std::experimental::optional<triangle_inter> triangle_intersection(
+std::optional<triangle_inter> triangle_intersection(
         const triangle_vec3& tri, const ray& ray, size_t ulp) {
     //  from Fast, Minimum Storage Ray/Triangle Intersection
     //  by Moller and Trumbore
@@ -30,7 +30,7 @@ std::experimental::optional<triangle_inter> triangle_intersection(
     const auto det = glm::dot(e0, pvec);
 
     if (almost_equal(det, 0.0f, ulp)) {
-        return std::experimental::nullopt;
+        return std::nullopt;
     }
 
     const auto invdet = 1 / det;
@@ -38,37 +38,37 @@ std::experimental::optional<triangle_inter> triangle_intersection(
     const auto u = invdet * glm::dot(tvec, pvec);
 
     if (u < 0 || 1 < u) {
-        return std::experimental::nullopt;
+        return std::nullopt;
     }
 
     const auto qvec = glm::cross(tvec, e0);
     const auto v = invdet * glm::dot(ray.get_direction(), qvec);
 
     if (v < 0 || 1 < v + u) {
-        return std::experimental::nullopt;
+        return std::nullopt;
     }
 
     const auto t = invdet * glm::dot(e1, qvec);
 
     if (t < 0 || almost_equal(t, 0.0f, ulp)) {
-        return std::experimental::nullopt;
+        return std::nullopt;
     }
 
     return triangle_inter{t, u, v};
 }
 
 template <typename T>
-std::experimental::optional<triangle_inter> triangle_intersection(
+std::optional<triangle_inter> triangle_intersection(
         const triangle& tri, const T* v, const ray& ray) {
     return triangle_intersection(get_triangle_vec3(tri, v), ray);
 }
 
-template std::experimental::optional<triangle_inter>
+template std::optional<triangle_inter>
 triangle_intersection<glm::vec3>(const triangle& tri,
                                  const glm::vec3* v,
                                  const ray& ray);
 
-template std::experimental::optional<triangle_inter>
+template std::optional<triangle_inter>
 triangle_intersection<cl_float3>(const triangle& tri,
                                  const cl_float3* v,
                                  const ray& ray);
@@ -76,12 +76,12 @@ triangle_intersection<cl_float3>(const triangle& tri,
 ////////////////////////////////////////////////////////////////////////////////
 
 template <typename T>
-std::experimental::optional<intersection> intersection_accumulator(
+std::optional<intersection> intersection_accumulator(
         const ray& ray,
         size_t triangle_index,
         const triangle* triangles,
         const T* vertices,
-        const std::experimental::optional<intersection>& current,
+        const std::optional<intersection>& current,
         size_t to_ignore) {
     if (triangle_index == to_ignore) {
         return current;
@@ -93,26 +93,26 @@ std::experimental::optional<intersection> intersection_accumulator(
                    : current;
 }
 
-template std::experimental::optional<intersection> intersection_accumulator<
+template std::optional<intersection> intersection_accumulator<
         glm::vec3>(const ray& ray,
                    size_t triangle_index,
                    const triangle* triangles,
                    const glm::vec3* vertices,
-                   const std::experimental::optional<intersection>& current,
+                   const std::optional<intersection>& current,
                    size_t to_ignore);
 
-template std::experimental::optional<intersection> intersection_accumulator<
+template std::optional<intersection> intersection_accumulator<
         cl_float3>(const ray& ray,
                    size_t triangle_index,
                    const triangle* triangles,
                    const cl_float3* vertices,
-                   const std::experimental::optional<intersection>& current,
+                   const std::optional<intersection>& current,
                    size_t to_ignore);
 
 ////////////////////////////////////////////////////////////////////////////////
 
 template <typename T>
-std::experimental::optional<intersection> ray_triangle_intersection(
+std::optional<intersection> ray_triangle_intersection(
         const ray& ray,
         const size_t* triangle_indices,
         size_t num_triangle_indices,
@@ -122,14 +122,14 @@ std::experimental::optional<intersection> ray_triangle_intersection(
     return std::accumulate(
             triangle_indices,
             triangle_indices + num_triangle_indices,
-            std::experimental::optional<intersection>{},
+            std::optional<intersection>{},
             [&](const auto& i, const auto& j) {
                 return intersection_accumulator(
                         ray, j, triangles, vertices, i, to_ignore);
             });
 }
 
-template std::experimental::optional<intersection>
+template std::optional<intersection>
 ray_triangle_intersection<glm::vec3>(const ray& ray,
                                      const size_t* triangle_indices,
                                      size_t num_triangle_indices,
@@ -137,7 +137,7 @@ ray_triangle_intersection<glm::vec3>(const ray& ray,
                                      const glm::vec3* vertices,
                                      size_t to_ignore);
 
-template std::experimental::optional<intersection>
+template std::optional<intersection>
 ray_triangle_intersection<cl_float3>(const ray& ray,
                                      const size_t* triangle_indices,
                                      size_t num_triangle_indices,
@@ -148,13 +148,13 @@ ray_triangle_intersection<cl_float3>(const ray& ray,
 ////////////////////////////////////////////////////////////////////////////////
 
 template <typename T>
-std::experimental::optional<intersection> ray_triangle_intersection(
+std::optional<intersection> ray_triangle_intersection(
         const ray& ray,
         const triangle* triangles,
         size_t num_triangles,
         const T* vertices,
         size_t to_ignore) {
-    std::experimental::optional<intersection> ret;
+    std::optional<intersection> ret;
     for (auto i = 0u; i != num_triangles; ++i) {
         ret = intersection_accumulator(
                 ray, i, triangles, vertices, ret, to_ignore);
@@ -162,14 +162,14 @@ std::experimental::optional<intersection> ray_triangle_intersection(
     return ret;
 }
 
-template std::experimental::optional<intersection>
+template std::optional<intersection>
 ray_triangle_intersection<glm::vec3>(const ray& ray,
                                      const triangle* triangles,
                                      size_t num_triangles,
                                      const glm::vec3* vertices,
                                      size_t to_ignore);
 
-template std::experimental::optional<intersection>
+template std::optional<intersection>
 ray_triangle_intersection<cl_float3>(const ray& ray,
                                      const triangle* triangles,
                                      size_t num_triangles,

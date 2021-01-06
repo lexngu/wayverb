@@ -84,11 +84,11 @@ public:
         }
     }
 
-    const std::experimental::optional<scene_data>& get_scene_data() const {
+    const std::optional<scene_data>& get_scene_data() const {
         return data_;
     }
 
-    void clear() { data_ = std::experimental::nullopt; };
+    void clear() { data_ = std::nullopt; };
 
     std::string get_extensions() const {
         aiString str;
@@ -98,7 +98,7 @@ public:
 
 private:
     Assimp::Importer importer_;
-    std::experimental::optional<scene_data> data_;
+    std::optional<scene_data> data_;
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -124,7 +124,7 @@ std::string scene_data_loader::get_extensions() const {
     return pimpl_->get_extensions();
 }
 
-const std::experimental::optional<scene_data_loader::scene_data>&
+const std::optional<scene_data_loader::scene_data>&
 scene_data_loader::get_scene_data() const {
     return pimpl_->get_scene_data();
 }

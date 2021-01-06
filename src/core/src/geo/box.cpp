@@ -26,7 +26,7 @@ bool overlaps(const box& b, const triangle_vec3& t) {
     return t_c_intersection(coll) == where::inside;
 }
 
-std::experimental::optional<std::pair<float, float>> intersection_distances(
+std::optional<std::pair<float, float>> intersection_distances(
         const box& b, const ray& ray) {
     /// from http://people.csail.mit.edu/amy/papers/box-jgt.pdf
     const auto inv = 1.0f / ray.get_direction();
@@ -41,19 +41,19 @@ std::experimental::optional<std::pair<float, float>> intersection_distances(
     const auto ybounds = get_bounds(1);
     const auto ty = (ybounds - ray.get_position().y) * inv.y;
     if (ty[1] < t[0] || t[1] < ty[0]) {
-        return std::experimental::nullopt;
+        return std::nullopt;
     }
     t[0] = std::max(ty[0], t[0]);
     t[1] = std::min(ty[1], t[1]);
     const auto zbounds = get_bounds(2);
     const auto tz = (zbounds - ray.get_position().z) * inv.z;
     if (tz[1] < t[0] || t[1] < tz[0]) {
-        return std::experimental::nullopt;
+        return std::nullopt;
     }
     return std::make_pair(std::max(tz[0], t[0]), std::min(tz[1], t[1]));
 }
 
-std::experimental::optional<float> intersects(const box& b, const ray& ray) {
+std::optional<float> intersects(const box& b, const ray& ray) {
     if (const auto i = intersection_distances(b, ray)) {
         if (0 < i->first) {
             return i->first;
@@ -62,7 +62,7 @@ std::experimental::optional<float> intersects(const box& b, const ray& ray) {
             return i->second;
         }
     }
-    return std::experimental::nullopt;
+    return std::nullopt;
 }
 
 bool intersects(const box& b, const ray& ray, float t0, float t1) {

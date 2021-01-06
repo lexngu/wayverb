@@ -5,7 +5,7 @@
 
 #include "glm/fwd.hpp"
 
-#include <experimental/optional>
+#include <optional>
 #include <numeric>
 
 namespace wayverb {
@@ -30,26 +30,26 @@ private:
 
 ////////////////////////////////////////////////////////////////////////////////
 
-std::experimental::optional<triangle_inter> triangle_intersection(
+std::optional<triangle_inter> triangle_intersection(
         const triangle_vec3& tri, const ray& ray, size_t ulp = 10);
 
 template <typename T>
-std::experimental::optional<triangle_inter> triangle_intersection(
+std::optional<triangle_inter> triangle_intersection(
         const triangle& tri, const T* v, const ray& ray);
 
 ////////////////////////////////////////////////////////////////////////////////
 
 template <typename T>
-std::experimental::optional<intersection> intersection_accumulator(
+std::optional<intersection> intersection_accumulator(
         const ray& ray,
         size_t triangle_index,
         const triangle* triangles,
         const T* vertices,
-        const std::experimental::optional<intersection>& current,
+        const std::optional<intersection>& current,
         size_t to_ignore = ~size_t{0});
 
 template <typename T>
-std::experimental::optional<intersection> ray_triangle_intersection(
+std::optional<intersection> ray_triangle_intersection(
         const ray& ray,
         const size_t* triangle_indices,
         size_t num_triangle_indices,
@@ -58,7 +58,7 @@ std::experimental::optional<intersection> ray_triangle_intersection(
         size_t to_ignore = ~size_t{0});
 
 template <typename T>
-std::experimental::optional<intersection> ray_triangle_intersection(
+std::optional<intersection> ray_triangle_intersection(
         const ray& ray,
         const triangle* triangles,
         size_t num_triangles,

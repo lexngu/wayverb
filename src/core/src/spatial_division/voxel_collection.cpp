@@ -37,7 +37,7 @@ util::aligned::vector<cl_uint> get_flattened(
 }
 
 namespace {
-std::experimental::optional<glm::ivec3> get_starting_index(
+std::optional<glm::ivec3> get_starting_index(
         const voxel_collection<3>& voxels, const geo::ray& ray) {
     const auto aabb = voxels.get_aabb();
 
@@ -60,7 +60,7 @@ std::experimental::optional<glm::ivec3> get_starting_index(
     }
 
     //  The ray never intersects with the voxel collection.
-    return std::experimental::nullopt;
+    return std::nullopt;
 }
 
 auto min_component(const glm::vec3& v) {
