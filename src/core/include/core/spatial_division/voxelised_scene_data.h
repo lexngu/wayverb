@@ -78,11 +78,11 @@ auto make_voxelised_scene_data(generic_scene_data<Vertex, Surface> scene,
 ////////////////////////////////////////////////////////////////////////////////
 
 template <typename Vertex, typename Surface>
-std::experimental::optional<intersection> intersects(
+std::optional<intersection> intersects(
         const voxelised_scene_data<Vertex, Surface>& voxelised,
         const geo::ray& ray,
         size_t to_ignore = ~size_t{0}) {
-    std::experimental::optional<intersection> state;
+    std::optional<intersection> state;
     traverse(voxelised.get_voxels(),
              ray,
              [&](const geo::ray& ray,
@@ -106,7 +106,7 @@ std::experimental::optional<intersection> intersects(
 }
 
 template <typename Vertex, typename Surface>
-std::experimental::optional<size_t> count_intersections(
+std::optional<size_t> count_intersections(
         const voxelised_scene_data<Vertex, Surface>& voxelised,
         const geo::ray& ray) {
     size_t count{0};
@@ -146,20 +146,20 @@ std::experimental::optional<size_t> count_intersections(
                  return false;
              });
     if (degenerate) {
-        return std::experimental::nullopt;
+        return std::nullopt;
     }
     return count;
 }
 
 namespace {
 template <typename Vertex, typename Surface>
-std::experimental::optional<bool> is_inside(
+std::optional<bool> is_inside(
         const voxelised_scene_data<Vertex, Surface>& voxelised,
         const geo::ray& ray) {
     if (const auto i = count_intersections(voxelised, ray)) {
         return *i % 2;
     }
-    return std::experimental::nullopt;
+    return std::nullopt;
 }
 }  // namespace
 

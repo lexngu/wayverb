@@ -10,16 +10,16 @@ TEST(geo_box, intersection_distances) {
 
     ASSERT_EQ(intersection_distances(
                       box, geo::ray{glm::vec3{0, 0, -2}, glm::vec3{0, 0, 1}}),
-              std::experimental::make_optional(std::make_pair(1.0f, 3.0f)));
+              std::make_optional(std::make_pair(1.0f, 3.0f)));
     ASSERT_EQ(intersection_distances(
                       box, geo::ray{glm::vec3{0, 0, 2}, glm::vec3{0, 0, 1}}),
-              std::experimental::make_optional(std::make_pair(-3.0f, -1.0f)));
+              std::make_optional(std::make_pair(-3.0f, -1.0f)));
     ASSERT_EQ(intersection_distances(
                       box, geo::ray{glm::vec3{0, 0, 2}, glm::vec3{0, 1, 0}}),
-              std::experimental::nullopt);
+              std::nullopt);
     ASSERT_EQ(intersection_distances(
                       box, geo::ray{glm::vec3{0, 0, 0}, glm::vec3{0, 0, 1}}),
-              std::experimental::make_optional(std::make_pair(-1.0f, 1.0f)));
+              std::make_optional(std::make_pair(-1.0f, 1.0f)));
 }
 
 TEST(geo_box, intersects) {
@@ -27,9 +27,9 @@ TEST(geo_box, intersects) {
 
     ASSERT_EQ(
             intersects(box, geo::ray{glm::vec3{0, 0, -2}, glm::vec3{0, 0, 1}}),
-            std::experimental::make_optional(1.0f));
+            std::make_optional(1.0f));
     ASSERT_EQ(intersects(box, geo::ray{glm::vec3{0, 0, 2}, glm::vec3{0, 0, 1}}),
-              std::experimental::nullopt);
+              std::nullopt);
 
     ASSERT_TRUE(intersects(
             box, geo::ray{glm::vec3{0, 0, -2}, glm::vec3{0, 0, 1}}, 0, 10));
