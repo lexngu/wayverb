@@ -2,6 +2,8 @@ include_directories(${DEPENDENCY_INSTALL_PREFIX}/include)
 
 file(GLOB sources "*.cpp")
 
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAG} -faligned-allocation)
+
 add_definitions(-DSCRATCH_PATH="${CMAKE_BINARY_DIR}")
 
 add_definitions(${test_file_flag})

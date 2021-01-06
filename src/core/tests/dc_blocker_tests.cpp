@@ -170,7 +170,7 @@ TEST(dc_blocker, io) {
               audio_file::format::wav,
               audio_file::bit_depth::pcm16);
 
-        auto run{[&i](auto& filter, const auto& filter_name, auto i) {
+        auto run{[&](auto& filter, const auto& filter_name, auto i) {
             filter::run_two_pass(filter, i.kernel.begin(), i.kernel.end());
             normalize(i.kernel);
             write(util::build_string(
