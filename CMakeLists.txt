@@ -6,6 +6,8 @@ endif()
 
 project(WAYVERB VERSION 0.1 LANGUAGES CXX)
 
+set(CMAKE_CXX_STANDARD 17)
+
 set(ONLY_BUILD_DOCS false CACHE BOOL "skip configuring the build and just build docs")
 
 if(ONLY_BUILD_DOCS)
