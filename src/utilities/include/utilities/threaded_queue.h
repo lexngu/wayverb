@@ -3,7 +3,7 @@
 #include "utilities/threading_policies.h"
 
 #include <queue>
-#include <experimental/optional>
+#include <optional>
 
 namespace util {
 
@@ -17,10 +17,10 @@ public:
         queue_.push(std::move(value));
     }
 
-    std::experimental::optional<value_type> pop() {
+    std::optional<value_type> pop() {
         const auto lck = threading_policy_.get_lock();
         if (queue_.empty()) {
-            return std::experimental::nullopt;
+            return std::nullopt;
         }
         auto ret = std::move(queue_.front());
         queue_.pop();

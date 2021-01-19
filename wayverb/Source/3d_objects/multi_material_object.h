@@ -12,7 +12,7 @@
 #include "modern_gl_utils/generic_shader.h"
 #include "modern_gl_utils/vao.h"
 
-#include <experimental/optional>
+#include <optional>
 #include <memory>
 
 class multi_material_object : public mglu::drawable {
@@ -25,7 +25,7 @@ public:
             const glm::vec3 *vertices,
             size_t num_vertices);
 
-    void set_highlighted(std::experimental::optional<size_t> highlighted);
+    void set_highlighted(std::optional<size_t> highlighted);
 
 private:
     void do_draw(const glm::mat4 &model_matrix) const override;
@@ -39,8 +39,8 @@ private:
     mglu::static_vbo geometry_;
     mglu::static_vbo colors_;
 
-    std::experimental::optional<size_t> highlighted_ =
-            std::experimental::nullopt;
+    std::optional<size_t> highlighted_ =
+            std::nullopt;
 
     class single_material_section : public mglu::drawable {
     public:

@@ -67,11 +67,11 @@ auto canonical(
             keep_going,
             std::forward<Callback>(callback),
             make_canonical_callbacks(sim_params, visual_items));
-    return tup ? std::experimental::make_optional(make_canonical_results(
+    return tup ? std::make_optional(make_canonical_results(
                          make_simulation_results(std::move(std::get<0>(*tup)),
                                                  std::move(std::get<1>(*tup))),
                          std::move(std::get<2>(*tup))))
-               : std::experimental::nullopt;
+               : std::nullopt;
 }
 
 }  // namespace raytracer

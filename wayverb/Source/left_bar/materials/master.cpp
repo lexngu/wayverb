@@ -227,8 +227,8 @@ void config_item::resized() {
 void config_item::buttonClicked(Button* b) {
     if (b == &show_button_) {
         scene_.set_visible_surface(
-                b->getToggleState() ? std::experimental::nullopt
-                                    : std::experimental::make_optional(index_));
+                b->getToggleState() ? std::nullopt
+                                    : std::make_optional(index_));
     } else if (b == &config_button_) {
         begin_modal_dialog(
                 model_->get_name(),

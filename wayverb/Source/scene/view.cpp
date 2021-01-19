@@ -70,7 +70,7 @@ public:
     }
 
     void set_highlighted_surface(
-            std::experimental::optional<size_t> highlighted) {
+            std::optional<size_t> highlighted) {
         highlighted_ = highlighted;
         if (model_object_) {
             model_object_->set_highlighted(highlighted);
@@ -212,8 +212,8 @@ private:
 
     //  Objects
     std::unique_ptr<multi_material_object> model_object_;
-    std::experimental::optional<size_t> highlighted_ =
-            std::experimental::nullopt;
+    std::optional<size_t> highlighted_ =
+            std::nullopt;
 
     std::unique_ptr<mesh_object> mesh_object_;
     std::unique_ptr<reflections_object> reflections_object_;
@@ -262,7 +262,7 @@ void view::set_scene(const wayverb::core::triangle* triangles,
 }
 
 void view::set_highlighted_surface(
-        std::experimental::optional<size_t> highlighted) {
+        std::optional<size_t> highlighted) {
     pimpl_->set_highlighted_surface(highlighted);
 }
 

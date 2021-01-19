@@ -27,7 +27,7 @@ namespace waveguide {
 namespace detail {
 
 template <typename Callback>
-std::experimental::optional<band> canonical_impl(
+std::optional<band> canonical_impl(
         const core::compute_context& cc,
         const mesh& mesh,
         double simulation_time,
@@ -81,7 +81,7 @@ std::experimental::optional<band> canonical_impl(
                 keep_going);
 
     if (steps != ideal_steps) {
-        return std::experimental::nullopt;
+        return std::nullopt;
     }
 
     return band{std::move(output_accumulator.get_output()), sample_rate};
@@ -98,7 +98,7 @@ std::experimental::optional<band> canonical_impl(
 ///     single hard source
 ///     single directional receiver
 template <typename PressureCallback>
-std::experimental::optional<util::aligned::vector<bandpass_band>> canonical(
+std::optional<util::aligned::vector<bandpass_band>> canonical(
         const core::compute_context& cc,
         voxels_and_mesh voxelised,
         const glm::vec3& source,
@@ -120,7 +120,7 @@ std::experimental::optional<util::aligned::vector<bandpass_band>> canonical(
                 std::move(*ret), util::make_range(0.0, sim_params.cutoff)}};
     }
 
-    return std::experimental::nullopt;
+    return std::nullopt;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -138,7 +138,7 @@ inline auto set_flat_coefficients_for_band(voxels_and_mesh& voxels_and_mesh,
 /// This is a sort of middle ground - more accurate boundary modelling, but
 /// really unbelievably slow.
 template <typename PressureCallback>
-std::experimental::optional<util::aligned::vector<bandpass_band>> canonical(
+std::optional<util::aligned::vector<bandpass_band>> canonical(
         const core::compute_context& cc,
         voxels_and_mesh voxelised,
         const glm::vec3& source,
@@ -169,7 +169,7 @@ std::experimental::optional<util::aligned::vector<bandpass_band>> canonical(
                     util::make_range(band_params.edges[band],
                                      band_params.edges[band + 1])});
         } else {
-            return std::experimental::nullopt;
+            return std::nullopt;
         }
     }
 

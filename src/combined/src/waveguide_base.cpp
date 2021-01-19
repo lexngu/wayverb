@@ -19,7 +19,7 @@ public:
         return waveguide::compute_sampling_frequency(sim_params_);
     }
 
-    std::experimental::optional<util::aligned::vector<waveguide::bandpass_band>>
+    std::optional<util::aligned::vector<waveguide::bandpass_band>>
     run(const core::compute_context& cc,
         const waveguide::voxels_and_mesh& voxelised,
         const glm::vec3& source,

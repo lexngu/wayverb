@@ -19,7 +19,7 @@
 #include "utilities/apply.h"
 #include "utilities/map.h"
 
-#include <experimental/optional>
+#include <optional>
 #include <iostream>
 
 namespace wayverb {
@@ -253,7 +253,7 @@ auto run(
         per_step_callback(group, groups);
 
         if (!keep_going) {
-            return std::experimental::optional<return_type>{};
+            return std::optional<return_type>{};
         }
     }
 
@@ -261,7 +261,7 @@ auto run(
         run_segment(it, e_direction);
     }
 
-    return std::experimental::make_optional(util::apply_each(
+    return std::make_optional(util::apply_each(
             util::map(make_get_results_functor_adapter{}, processors)));
 }
 

@@ -6,7 +6,7 @@
 
 #include "glm/glm.hpp"
 
-#include <experimental/optional>
+#include <optional>
 
 namespace wayverb {
 namespace combined {
@@ -52,8 +52,8 @@ class scene final {
 public:
     //  interactive data actions
 
-    void set_visible_surface(std::experimental::optional<size_t> visible);
-    std::experimental::optional<size_t> get_visible_surface() const;
+    void set_visible_surface(std::optional<size_t> visible);
+    std::optional<size_t> get_visible_surface() const;
 
     void set_visualise(bool visualise);
     bool get_visualise() const;
@@ -89,7 +89,7 @@ public:
     glm::vec3 compute_world_mouse_direction(const glm::vec2& pos) const;
 
     using visible_surface_changed =
-            util::event<std::experimental::optional<size_t>>;
+            util::event<std::optional<size_t>>;
     visible_surface_changed::connection connect_visible_surface_changed(
             visible_surface_changed::callback_type callback);
 
@@ -114,7 +114,7 @@ private:
 
     //  data
 
-    std::experimental::optional<size_t> visible_surface_;
+    std::optional<size_t> visible_surface_;
 
     bool visualise_ = true;
 

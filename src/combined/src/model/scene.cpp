@@ -56,12 +56,12 @@ view_state ease(const view_state& from, const view_state& to, float speed) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-void scene::set_visible_surface(std::experimental::optional<size_t> visible) {
+void scene::set_visible_surface(std::optional<size_t> visible) {
     visible_surface_ = visible;
     visible_surface_changed_(get_visible_surface());
 }
 
-std::experimental::optional<size_t> scene::get_visible_surface() const {
+std::optional<size_t> scene::get_visible_surface() const {
     return visible_surface_;
 }
 

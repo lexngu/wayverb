@@ -76,7 +76,7 @@ void multi_material_object::do_draw(const glm::mat4 &model_matrix) const {
 }
 
 void multi_material_object::set_highlighted(
-        std::experimental::optional<size_t> highlighted) {
+        std::optional<size_t> highlighted) {
     highlighted_ = highlighted;
 }
 

@@ -69,7 +69,7 @@ struct reflector_fixture : public ::testing::Test {
     auto get_fast_intersections() {
         const auto rays = reflector.get_rays();
         const auto reflections = reflector.get_reflections();
-        util::aligned::vector<std::experimental::optional<intersection>> ret;
+        util::aligned::vector<std::optional<intersection>> ret;
         ret.reserve(rays.size());
         for (auto i = 0u; i != rays.size(); ++i) {
             ret.emplace_back(intersects(
@@ -81,7 +81,7 @@ struct reflector_fixture : public ::testing::Test {
     auto get_slow_intersections() {
         const auto rays = reflector.get_rays();
         const auto reflections = reflector.get_reflections();
-        util::aligned::vector<std::experimental::optional<intersection>> ret;
+        util::aligned::vector<std::optional<intersection>> ret;
         ret.reserve(rays.size());
         for (auto i = 0u; i != rays.size(); ++i) {
             ret.emplace_back(geo::ray_triangle_intersection(

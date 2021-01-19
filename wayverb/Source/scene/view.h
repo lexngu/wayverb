@@ -14,7 +14,7 @@
 
 #include "glm/glm.hpp"
 
-#include <experimental/optional>
+#include <optional>
 
 namespace wayverb {
 namespace combined {
@@ -57,7 +57,7 @@ public:
                    size_t num_vertices);
 
     void set_highlighted_surface(
-            std::experimental::optional<size_t> highlighted);
+            std::optional<size_t> highlighted);
     void set_emphasis_colour(const glm::vec3& colour);
 
     //  Sources/receivers.

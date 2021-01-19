@@ -2,7 +2,7 @@
 
 #include "utilities/aligned/vector.h"
 
-#include <experimental/optional>
+#include <optional>
 
 namespace wayverb {
 namespace raytracer {
@@ -41,7 +41,7 @@ private:
     void push_item(size_t index, T item) {
         data_[index].emplace_back(std::move(item));
     }
-    void push_item(size_t index, const std::experimental::optional<T>& item) {
+    void push_item(size_t index, const std::optional<T>& item) {
         if (item) {
             push_item(index, *item);
         }

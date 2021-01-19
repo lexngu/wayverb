@@ -18,7 +18,7 @@ auto get_direct(const glm::vec3& source,
     constexpr auto channels = typename Surface::bands_t{};
 
     if (source == receiver) {
-        return std::experimental::optional<impulse<channels>>{};
+        return std::optional<impulse<channels>>{};
     }
 
     const auto source_to_receiver = receiver - source;
@@ -30,14 +30,14 @@ auto get_direct(const glm::vec3& source,
 
     if (!intersection ||
         (intersection && intersection->inter.t >= source_to_receiver_length)) {
-        return std::experimental::make_optional(impulse<channels>{
+        return std::make_optional(impulse<channels>{
                 core::unit_constructor_v<
                         ::detail::cl_vector_constructor_t<float, channels>>,
                 core::to_cl_float3{}(source),
                 source_to_receiver_length});
     }
 
-    return std::experimental::optional<impulse<channels>>{};
+    return std::optional<impulse<channels>>{};
 }
 
 }  // namespace image_source

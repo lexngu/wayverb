@@ -4,7 +4,7 @@
 
 #include "glm/fwd.hpp"
 
-#include <experimental/optional>
+#include <optional>
 #include <functional>
 
 //  forward declarations  //////////////////////////////////////////////////////
@@ -44,7 +44,7 @@ public:
 
     virtual double compute_sampling_frequency() const = 0;
 
-    virtual std::experimental::optional<
+    virtual std::optional<
             util::aligned::vector<waveguide::bandpass_band>>
     run(const core::compute_context& cc,
         const waveguide::voxels_and_mesh& voxelised,

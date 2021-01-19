@@ -16,10 +16,10 @@ public:
     void push(It b, It e) {
         reflection_path_builder_.push(b, e, [](const reflection& i) {
             return i.keep_going
-                           ? std::experimental::make_optional(path_element{
+                           ? std::make_optional(path_element{
                                      i.triangle,
                                      static_cast<bool>(i.receiver_visible)})
-                           : std::experimental::nullopt;
+                           : std::nullopt;
         });
     }
 

@@ -4,7 +4,7 @@
 #include "combined/engine.h"
 #include "combined/forwarding_call.h"
 
-#include <experimental/optional>
+#include <optional>
 
 namespace wayverb {
 namespace combined {
@@ -28,7 +28,7 @@ public:
     postprocessing_engine& operator=(postprocessing_engine&&) noexcept = delete;
 
     template <typename It>
-    std::experimental::optional<
+    std::optional<
             util::aligned::vector<util::aligned::vector<float>>>
     run(It b_capsules,
         It e_capsules,
@@ -64,7 +64,7 @@ public:
         const auto intermediate = engine_.run(keep_going);
 
         if (intermediate == nullptr) {
-            return std::experimental::nullopt;
+            return std::nullopt;
         }
 
         engine_state_changed_(state::postprocessing, 1.0);
@@ -76,7 +76,7 @@ public:
         }
 
         if (!keep_going) {
-            return std::experimental::nullopt;
+            return std::nullopt;
         }
 
         return channels;

@@ -97,7 +97,7 @@ private:
         util::aligned::vector<reflection_metadata> intersections;
     };
 
-    static std::experimental::optional<valid_path> find_valid_path(
+    static std::optional<valid_path> find_valid_path(
             const glm::vec3& source,
             const glm::vec3& receiver,
             const vsd& voxelised,
@@ -106,7 +106,7 @@ private:
         //  over the receiver, which is bad, so we quit with null in that case.
         const auto final_image_source = state.back().image_source;
         if (receiver == final_image_source) {
-            return std::experimental::nullopt;
+            return std::nullopt;
         }
 
         //  check that we can cast a ray to the receiver from all of the image
@@ -131,7 +131,7 @@ private:
             //  isn't the correct one.
             if (!intersection || intersection->index != i->index) {
                 //  There's no valid path, return null.
-                return std::experimental::nullopt;
+                return std::nullopt;
             }
 
             //  This path segment is valid.
@@ -163,7 +163,7 @@ private:
             const auto intersection = intersects(voxelised, ray);
             if (!intersection ||
                 intersection->index != accumulator.prev_surface) {
-                return std::experimental::nullopt;
+                return std::nullopt;
             }
         }
 

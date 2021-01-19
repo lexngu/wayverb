@@ -39,7 +39,7 @@ else()
     #set(CMAKE_CXX_VISIBILITY_PRESET hidden)
     #set(CMAKE_VISIBILITY_INLINES_HIDDEN ON)
 
-    enable_testing()
+    #enable_testing()
     add_subdirectory(src)
     add_subdirectory(bin)
 endif()
