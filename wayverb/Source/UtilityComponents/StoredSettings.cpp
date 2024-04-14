@@ -100,7 +100,7 @@ void StoredSettings::set_last_projects(const juce::Array<juce::File>& files) {
 
 void StoredSettings::changed() {
     std::shared_ptr<juce::XmlElement> data(project_defaults.createXml());
-    //property_files.getUnchecked(0)->setValue("PROJECT_DEFAULT_SETTINGS", data);
+    ((juce::PropertySet*) property_files.getUnchecked(0))->setValue("PROJECT_DEFAULT_SETTINGS", data.get());
 }
 
 void StoredSettings::valueTreePropertyChanged(juce::ValueTree&,
