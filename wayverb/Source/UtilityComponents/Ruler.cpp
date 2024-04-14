@@ -1,5 +1,5 @@
 #include "Ruler.h"
-
+#include <cassert>
 #include "juce_range_utils.h"
 
 #include <iomanip>

@@ -1,0 +1,8 @@
+G72x/g723_40.lo: \
+  /Users/alexander/git/wayverb-alemusica/dependencies/src/sndfile_external/src/G72x/g723_40.c \
+  /Users/alexander/git/wayverb-alemusica/dependencies/src/sndfile_external/src/G72x/g72x.h \
+  /Users/alexander/git/wayverb-alemusica/dependencies/src/sndfile_external/src/G72x/g72x_priv.h
+
+/Users/alexander/git/wayverb-alemusica/dependencies/src/sndfile_external/src/G72x/g72x.h:
+
+/Users/alexander/git/wayverb-alemusica/dependencies/src/sndfile_external/src/G72x/g72x_priv.h:

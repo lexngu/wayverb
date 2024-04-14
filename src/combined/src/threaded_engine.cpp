@@ -11,6 +11,7 @@
 #include "waveguide/mesh.h"
 
 #include "audio_file/audio_file.h"
+#include <iostream>
 
 namespace wayverb {
 namespace combined {
@@ -87,6 +88,7 @@ void complete_engine::do_run(core::compute_context compute_context,
 
         //  Send the "IT HAS BEGUN" message.
         begun_();
+        std::cout << "begun" << std::endl;
 
         constexpr core::environment environment{};
 
@@ -160,6 +162,7 @@ void complete_engine::do_run(core::compute_context compute_context,
                       e_receiver = std::end(*persistent.receivers().item());
                  receiver != e_receiver && keep_going_;
                  ++receiver, ++run) {
+                std::cout << "run " << run << std::endl;
                 //  Set up an engine to use.
                 postprocessing_engine eng{compute_context,
                                           scene_data,
@@ -168,26 +171,29 @@ void complete_engine::do_run(core::compute_context compute_context,
                                           environment,
                                           persistent.raytracer().item()->get(),
                                           poly_waveguide->clone()};
-
+                std::cout << "eng set up!" << std::endl;
                 //  Send new node position notification.
                 waveguide_node_positions_changed_(
                         eng.get_voxels_and_mesh().mesh.get_descriptor());
-
+                
                 //  Register callbacks.
                 if (!engine_state_changed_.empty()) {
                     eng.connect_engine_state_changed([this, runs, run](
                             auto state, auto progress) {
+                        std::cout << "engine state changed" << std::endl;
                         engine_state_changed_(run, runs, state, progress);
                     });
                 }
 
                 if (!waveguide_node_pressures_changed_.empty()) {
+                    std::cout << "node pressures changed" << std::endl;
                     eng.connect_waveguide_node_pressures_changed(
                             make_forwarding_call(
                                     waveguide_node_pressures_changed_));
                 }
 
                 if (!raytracer_reflections_generated_.empty()) {
+                    std::cout << "reflections generated" << std::endl;
                     eng.connect_raytracer_reflections_generated(
                             make_forwarding_call(
                                     raytracer_reflections_generated_));
@@ -201,6 +207,7 @@ void complete_engine::do_run(core::compute_context compute_context,
                                     *i.item(),
                                     receiver->item()->get_orientation());
                         });
+                std::cout << "polymorphic_capsules finished" << std::endl;
 
                 //  Run the simulation, cache the result.
                 auto channel =
@@ -208,6 +215,7 @@ void complete_engine::do_run(core::compute_context compute_context,
                                 end(polymorphic_capsules),
                                 get_sample_rate(output.get_sample_rate()),
                                 keep_going_);
+                std::cout << "channel finished" << std::endl;
 
                 //  If user cancelled while processing the channel, channel
                 //  will be null, but we want to exit before throwing an
@@ -222,6 +230,7 @@ void complete_engine::do_run(core::compute_context compute_context,
                             "be rendered."};
                 }
 
+                std::cout << "before for" << std::endl;
                 for (size_t i = 0,
                             e = receiver->item()->capsules().item()->size();
                      i != e;
@@ -235,8 +244,10 @@ void complete_engine::do_run(core::compute_context compute_context,
                                              .item(),
                                     output)});
                 }
+                std::cout << "after for" << std::endl;
             }
         }
+        std::cout << "source-receivers OK" << std::endl;
 
         //  If keep going is false now, then the simulation was cancelled.
         if (keep_going_) {
@@ -265,6 +276,7 @@ void complete_engine::do_run(core::compute_context compute_context,
                     sample *= factor;
                 }
             }
+            std::cout << "normnalized" << std::endl;
 
             //  Write out files.
             for (const auto& i : all_channels) {
@@ -274,6 +286,7 @@ void complete_engine::do_run(core::compute_context compute_context,
                                   output.get_format(),
                                   output.get_bit_depth());
             }
+            std::cout << "written" << std::endl;
         }
 
     } catch (const std::exception& e) {

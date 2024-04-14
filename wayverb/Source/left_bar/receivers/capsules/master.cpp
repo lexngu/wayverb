@@ -1,9 +1,9 @@
 #include "master.h"
-#include "PolarPatternDisplay.h"
+#include "../../../PolarPatternDisplay.h"
 
 #include "../../azimuth_elevation_property.h"
 #include "../../slider_property.h"
-#include "text_property.h"
+#include "../../../text_property.h"
 
 #include "combined/model/capsule.h"
 

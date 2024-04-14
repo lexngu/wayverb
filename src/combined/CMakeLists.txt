@@ -2,6 +2,9 @@ file(GLOB_RECURSE sources "src/*.cpp")
 file(GLOB_RECURSE public_headers "include/*.h")
 file(GLOB_RECURSE private_headers "src/*.h")
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED true)
+
 add_library(combined STATIC ${sources} ${public_headers} ${private_headers})
 
 add_dependencies(combined modern_gl_utils_external)

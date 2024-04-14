@@ -1,3 +1,5 @@
+#include "../JuceLibraryCode/JuceHeader.h"
+
 #include "main_window.h"
 #include "Application.h"
 #include "CommandIDs.h"

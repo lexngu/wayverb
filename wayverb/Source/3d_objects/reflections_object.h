@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../JuceLibraryCode/JuceHeader.h"
+
 #include "raytracer/cl/reflection.h"
 
 #include "utilities/aligned/vector.h"

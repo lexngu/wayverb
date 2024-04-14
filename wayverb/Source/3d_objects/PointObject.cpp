@@ -46,7 +46,7 @@ RingObject::RingObject(const std::shared_ptr<mglu::generic_shader>& shader,
                               compute_ring_points(pts, axis),
                               util::aligned::vector<glm::vec4>(pts, color),
                               compute_ring_indices(pts),
-                              GL_LINE_STRIP) {}
+                              juce::gl::GL_LINE_STRIP) {}
 
 //----------------------------------------------------------------------------//
 
@@ -56,7 +56,7 @@ LineObject::LineObject(const std::shared_ptr<mglu::generic_shader>& shader,
                               {{0, 0, 0}, {0, 0, -1}},
                               util::aligned::vector<glm::vec4>(2, color),
                               {0, 1},
-                              GL_LINES) {}
+                              juce::gl::GL_LINES) {}
 
 //----------------------------------------------------------------------------//
 

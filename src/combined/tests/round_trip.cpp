@@ -115,5 +115,5 @@ TEST(round_trip, waveguide) {
 }
 
 TEST(round_trip, persistent) {
-    round_trip(model::persistent{});
+    round_trip(model::persistent());
 }

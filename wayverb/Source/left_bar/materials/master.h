@@ -1,11 +1,12 @@
 #pragma once
 
-#include "main_model.h"
+#include "../JuceLibraryCode/JuceHeader.h"
+
+#include "../../main_model.h"
 
 #include "../../UtilityComponents/connector.h"
 #include "../vector_list_box.h"
 
-#include "../JuceLibraryCode/JuceHeader.h"
 
 namespace left_bar {
 namespace materials {

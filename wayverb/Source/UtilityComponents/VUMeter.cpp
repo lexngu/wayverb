@@ -8,7 +8,7 @@ void BufferReader::push_buffer(const juce::AudioSampleBuffer &buffer) {
                 buffer.getNumChannels(),
                 buffer.getNumSamples());
 }
-void BufferReader::push_buffer(const float **channel_data,
+void BufferReader::push_buffer(const float* const* channel_data,
                                int num_channels,
                                int num_samples) {
     do_push_buffer(channel_data, num_channels, num_samples);
@@ -16,7 +16,7 @@ void BufferReader::push_buffer(const float **channel_data,
 
 //----------------------------------------------------------------------------//
 
-void Meter::do_push_buffer(const float **channel_data,
+void Meter::do_push_buffer(const float* const* channel_data,
                            int num_channels,
                            int num_samples) {
     set_level(channel < num_channels
@@ -67,7 +67,7 @@ void VUMeter::on_change() {
     listener_list.call(&Listener::vu_meter_level_changed, this, get_level());
 }
 
-void VUMeter::do_push_buffer(const float **channel_data,
+void VUMeter::do_push_buffer(const float* const* channel_data,
                              int num_channels,
                              int num_samples) {
     meter.push_buffer(channel_data, num_channels, num_samples);
@@ -104,7 +104,7 @@ void DualVUMeter::on_change() {
                        get_rms_level());
 }
 
-void DualVUMeter::do_push_buffer(const float **channel_data,
+void DualVUMeter::do_push_buffer(const float* const* channel_data,
                                  int num_channels,
                                  int num_samples) {
     abs_meter.push_buffer(channel_data, num_channels, num_samples);

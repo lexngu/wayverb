@@ -1,5 +1,7 @@
 include_directories(${DEPENDENCY_INSTALL_PREFIX}/include)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED true)
 set(name combined_tests)
 file(GLOB sources "*.cpp")
 

@@ -1,3 +1,5 @@
+#include "../JuceLibraryCode/JuceHeader.h"  //  Only for GL stuff
+
 #include "view.h"
 
 #include "combined/model/scene.h"
@@ -10,8 +12,6 @@
 #include "../3d_objects/reflections_object.h"
 
 #include "modern_gl_utils/generic_shader.h"
-
-#include "../JuceLibraryCode/JuceHeader.h"  //  Only for GL stuff
 
 namespace scene {
 
@@ -146,17 +146,17 @@ public:
 
     void do_draw(const glm::mat4& model_matrix) const {
         const auto c = 0.0;
-        glClearColor(c, c, c, 0);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        juce::gl::glClearColor(c, c, c, 0);
+        juce::gl::glClear(juce::gl::GL_COLOR_BUFFER_BIT | juce::gl::GL_DEPTH_BUFFER_BIT);
 
-        glEnable(GL_PROGRAM_POINT_SIZE);
-        glEnable(GL_DEPTH_TEST);
+        juce::gl::glEnable(juce::gl::GL_PROGRAM_POINT_SIZE);
+        juce::gl::glEnable(juce::gl::GL_DEPTH_TEST);
 
-        glEnable(GL_MULTISAMPLE);
-        glEnable(GL_LINE_SMOOTH);
-        glEnable(GL_POLYGON_SMOOTH);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        juce::gl::glEnable(juce::gl::GL_MULTISAMPLE);
+        juce::gl::glEnable(juce::gl::GL_LINE_SMOOTH);
+        juce::gl::glEnable(juce::gl::GL_POLYGON_SMOOTH);
+        juce::gl::glEnable(juce::gl::GL_BLEND);
+        juce::gl::glBlendFunc(juce::gl::GL_SRC_ALPHA, juce::gl::GL_ONE_MINUS_SRC_ALPHA);
 
         const auto config_shader = [this](const auto& shader) {
             const auto s_shader = shader->get_scoped();

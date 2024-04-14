@@ -4,7 +4,7 @@
 
 #include "../azimuth_elevation_property.h"
 #include "../vec3_property.h"
-#include "text_property.h"
+#include "../../text_property.h"
 
 #include "combined/model/receiver.h"
 

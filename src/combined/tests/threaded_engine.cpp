@@ -19,7 +19,7 @@ TEST(threaded_engine, threaded_engine) {
 
     const auto scene_data = geo::get_scene_data(box, surface);
 
-    model::persistent persistent{};
+    model::persistent persistent;
     (*persistent.sources())[0]->set_position(source);
     (*persistent.receivers())[0]->set_position(receiver);
 

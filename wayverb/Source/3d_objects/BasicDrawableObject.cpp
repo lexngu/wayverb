@@ -37,7 +37,7 @@ void BasicDrawableObject::do_draw(const glm::mat4& model_matrix) const {
     shader->set_model_matrix(model_matrix);
 
     auto s_vao = vao.get_scoped();
-    glDrawElements(mode, ibo.size(), GL_UNSIGNED_INT, nullptr);
+    juce::gl::glDrawElements(mode, ibo.size(), juce::gl::GL_UNSIGNED_INT, nullptr);
 }
 
 glm::mat4 BasicDrawableObject::get_local_model_matrix() const {

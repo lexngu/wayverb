@@ -16,6 +16,6 @@ include_directories(${DEPENDENCY_INSTALL_PREFIX}/include)
 
 add_executable(waveguide_tests ${sources})
 
-target_link_libraries(waveguide_tests compensation_signal waveguide gtest ${CMAKE_SOURCE_DIR}/build/dependencies/lib/libirrXML.a)
+target_link_libraries(waveguide_tests compensation_signal waveguide gtest ${CMAKE_SOURCE_DIR}/dependencies/lib/libirrXML.a)
 
 add_test(NAME waveguide_tests COMMAND waveguide_tests)

@@ -1,0 +1,9 @@
+# This is a generated file and its contents are an internal implementation detail.
+# The download step will be re-executed if anything in this file changes.
+# No other meaning or use of this file is supported.
+
+method=custom
+command=/Applications/Xcode.app/Contents/Developer/usr/bin/git;clone;--depth;1;--branch;v1.2.1;https://github.com/USCiLab/cereal.git;cereal_external
+source_dir=/Users/alexander/git/wayverb-alemusica/dependencies/src/cereal_external
+work_dir=/Users/alexander/git/wayverb-alemusica/dependencies/src
+

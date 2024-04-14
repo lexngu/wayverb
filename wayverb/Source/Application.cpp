@@ -1,5 +1,7 @@
+#include "../JuceLibraryCode/JuceHeader.h"
+
 #include "Application.h"
-#include "AngularLookAndFeel.h"
+#include "UtilityComponents/AngularLookAndFeel.h"
 #include "CommandIDs.h"
 #include "try_and_explain.h"
 
@@ -247,7 +249,7 @@ private:
     }
 
     void open_project_from_dialog() {
-        FileChooser fc("open project", File::nonexistent, valid_file_formats);
+        FileChooser fc("open project", File(), valid_file_formats);
         if (fc.browseForFileToOpen()) {
             open_project(fc.getResult().getFullPathName().toStdString());
         }

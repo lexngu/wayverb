@@ -5,6 +5,7 @@
 #include "core/scene_data.h"
 #include "core/spatial_division/voxel_collection.h"
 
+#include <optional>
 #include <random>
 
 namespace wayverb {

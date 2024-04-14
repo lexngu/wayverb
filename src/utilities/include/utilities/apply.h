@@ -23,7 +23,7 @@ constexpr auto apply(Func&& func, T&& t, std::index_sequence<Ix...>) {
 /// tuple contents as arguments.
 template <typename Callback, typename Collection>
 constexpr auto apply(Callback&& callback, Collection&& c) {
-    return apply(std::forward<Callback>(callback),
+    return ::util::apply(std::forward<Callback>(callback),
                  std::forward<Collection>(c),
                  std::make_index_sequence<
                          tuple_like_size_v<decay_const_ref_t<Collection>>>{});
@@ -35,7 +35,7 @@ template <typename Callbacks, typename Collection, size_t... Ix>
 constexpr auto apply_each(Callbacks&& callbacks,
                           const Collection& c,
                           std::index_sequence<Ix...>) {
-    return std::make_tuple(apply(tuple_like_getter<Ix>(callbacks), c)...);
+    return std::make_tuple(::util::apply(tuple_like_getter<Ix>(callbacks), c)...);
 }
 
 /// Given a tuple of callable things and a tuple of arguments, call each thing
@@ -72,7 +72,7 @@ void call_each(Callbacks&& callbacks,
                const Collection& c,
                std::index_sequence<Ix...>) {
     (void)std::initializer_list<int>{
-            ((void)apply(tuple_like_getter<Ix>(callbacks), c), 0)...};
+            ((void) ::util::apply(tuple_like_getter<Ix>(callbacks), c), 0)...};
 }
 
 /// Given a tuple of callable things and a tuple of arguments, call each thing

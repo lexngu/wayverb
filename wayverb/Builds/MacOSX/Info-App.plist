@@ -8,7 +8,7 @@
     <key>CFBundleIconFile</key>
     <string>Icon.icns</string>
     <key>CFBundleIdentifier</key>
-    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <string>com.reubenthomas.wayverb</string>
     <key>CFBundleName</key>
     <string>wayverb</string>
     <key>CFBundleDisplayName</key>
@@ -40,6 +40,8 @@
         <string>Icon</string>
         <key>NSPersistentStoreTypeKey</key>
         <string>XML</string>
+        <key>LSHandlerRank</key>
+        <string>Default</string>
       </dict>
     </array>
   </dict>

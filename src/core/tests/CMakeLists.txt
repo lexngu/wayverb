@@ -20,6 +20,6 @@ add_executable(core_tests ${sources})
 
 add_dependencies(core_tests cereal_external)
 
-target_link_libraries(core_tests core gtest ${CMAKE_SOURCE_DIR}/build/dependencies/lib/libirrXML.a)
+target_link_libraries(core_tests core gtest ${CMAKE_SOURCE_DIR}/dependencies/lib/libirrXML.a)
 
 add_test(NAME core_tests COMMAND core_tests)

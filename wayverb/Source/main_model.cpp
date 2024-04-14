@@ -1,3 +1,5 @@
+#include "../JuceLibraryCode/JuceHeader.h"
+
 #include "main_model.h"
 
 #include "UtilityComponents/async_work_queue.h"
@@ -116,7 +118,7 @@ auto make_queue_forwarding_call(T& t, async_work_queue& queue) {
 class main_model::impl final {
     template <typename T>
     auto make_queue_forwarding_call(T& t) {
-        return detail::make_queue_forwarding_call(t, queue_);
+        return ::detail::make_queue_forwarding_call(t, queue_);
     }
 
 public:

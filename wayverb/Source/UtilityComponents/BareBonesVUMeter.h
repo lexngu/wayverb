@@ -22,7 +22,7 @@ public:
     void vu_meter_levels_changed(DualVUMeter*, float abs, float rms) override;
 
 private:
-    void do_push_buffer(const float** channel_data,
+    void do_push_buffer(const float* const* channel_data,
                         int num_channels,
                         int num_samples) override;
 

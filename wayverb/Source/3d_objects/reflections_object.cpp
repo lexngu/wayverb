@@ -258,12 +258,12 @@ reflections_object::reflections_object(
                                  positions_,
                                  shader->get_attrib_location_v_position(),
                                  3,
-                                 GL_FLOAT);
+                                 juce::gl::GL_FLOAT);
     mglu::enable_and_bind_buffer(vao_,
                                  pressures_,
                                  shader->get_attrib_location_v_pressure(),
                                  1,
-                                 GL_FLOAT);
+                                 juce::gl::GL_FLOAT);
     ibo_.bind();
 }
 
@@ -279,7 +279,7 @@ void reflections_object::do_draw(const glm::mat4& model_matrix) const {
         shader->set_model_matrix(model_matrix);
 
         auto s_vao = vao_.get_scoped();
-        glDrawElements(GL_LINES, ibo_.size(), GL_UNSIGNED_INT, nullptr);
+        juce::gl::glDrawElements(juce::gl::GL_LINES, ibo_.size(), juce::gl::GL_UNSIGNED_INT, nullptr);
     }
 }
 

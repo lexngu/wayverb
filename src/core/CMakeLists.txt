@@ -8,6 +8,7 @@ file(GLOB_RECURSE public_headers "include/*.h")
 file(GLOB_RECURSE private_headers "src/*.h")
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED true)
 
 add_library(core STATIC ${sources} ${public_headers} ${private_headers} ${outfile})
 

@@ -1,5 +1,5 @@
 #pragma once
-
+#include "../../JuceLibraryCode/JuceHeader.h"
 #include "modern_gl_utils/exceptions.h"
 #include "modern_gl_utils/generic_shader.h"
 

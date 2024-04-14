@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="IqmNqo" name="wayverb" projectType="guiapp" version="0.0.1"
               bundleIdentifier="com.reubenthomas.wayverb" includeBinaryInAppConfig="1"
-              jucerVersion="4.3.0">
+              displaySplashScreen="1" jucerFormatVersion="1" defines="JUCE_MODAL_LOOPS_PERMITTED=1">
   <MAINGROUP id="aLrqtw" name="wayverb">
     <GROUP id="{7B584E1B-2D8F-4FAF-2BC9-A18BF95B12BA}" name="Source">
       <GROUP id="{1AA0A1DE-8B1B-9F90-FACD-F8DAB10973BD}" name="3d_objects">
@@ -175,33 +175,33 @@
     <FILE id="eBKJgN" name="wayverb.png" compile="0" resource="1" file="wayverb.png"/>
   </MAINGROUP>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" extraCompilerFlags="-I../../../src/audio_file/include&#10;-I../../../src/combined/include&#10;-I../../../src/core/include&#10;-I../../../src/frequency_domain/include&#10;-I../../../src/hrtf/lib/include&#10;-I../../../src/raytracer/include&#10;-I../../../src/utilities/include&#10;-I../../../src/waveguide/include&#10;-I../../../build/include&#10;-I../../../build/dependencies/include"
-               extraLinkerFlags="-L../../../build/lib&#10;-L../../../build/dependencies/lib"
+    <XCODE_MAC targetFolder="Builds/MacOSX" extraCompilerFlags="-I../../../src/audio_file/include&#10;-I../../../src/combined/include&#10;-I../../../src/core/include&#10;-I../../../src/frequency_domain/include&#10;-I../../../src/hrtf/lib/include&#10;-I../../../src/raytracer/include&#10;-I../../../src/utilities/include&#10;-I../../../src/waveguide/include&#10;-I../../../include&#10;-I../../../dependencies/include"
+               extraLinkerFlags="-L../../../lib&#10;-L../../../dependencies/lib"
                externalLibraries="assimp&#10;audio_file&#10;combined&#10;compensation_signal&#10;core&#10;fftw3&#10;fftw3f&#10;frequency_domain&#10;itpp_static&#10;modern_gl_utils&#10;raytracer&#10;samplerate&#10;sndfile&#10;utilities&#10;waveguide&#10;zlibstatic"
                documentExtensions="way" extraFrameworks="OpenCL" prebuildCommand="cd ../../../ &amp;&amp; ./build.sh"
-               smallIcon="eBKJgN" bigIcon="eBKJgN">
+               smallIcon="eBKJgN" bigIcon="eBKJgN" xcodeValidArchs="x86_64">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="wayverb"
-                       osxSDK="default" osxCompatibility="10.9 SDK" osxArchitecture="64BitIntel"
-                       cppLanguageStandard="gnu++14" cppLibType=""/>
+                       osxSDK="default" osxCompatibility="10.13 SDK" osxArchitecture="64BitIntel"
+                       cppLanguageStandard="gnu++14" cppLibType="" macOSDeploymentTarget="10.13"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="wayverb"
-                       osxCompatibility="10.9 SDK" osxArchitecture="64BitIntel" cppLanguageStandard="gnu++14"
-                       cppLibType="" linkTimeOptimisation="0" osxSDK="default"/>
+                       osxCompatibility="10.13 SDK" osxArchitecture="64BitIntel" cppLanguageStandard="gnu++14"
+                       cppLibType="" linkTimeOptimisation="0" osxSDK="default" macOSDeploymentTarget="10.13"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_core" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_events" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_graphics" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_data_structures" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_gui_extra" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_cryptography" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_video" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_opengl" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_basics" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../JUCE-6.1.6/modules"/>
+        <MODULEPATH id="juce_events" path="../../../JUCE-6.1.6/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../JUCE-6.1.6/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../JUCE-6.1.6/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../JUCE-6.1.6/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../JUCE-6.1.6/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../../JUCE-6.1.6/modules"/>
+        <MODULEPATH id="juce_video" path="../../../JUCE-6.1.6/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../../JUCE-6.1.6/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../JUCE-6.1.6/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../JUCE-6.1.6/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../JUCE-6.1.6/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../JUCE-6.1.6/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
   </EXPORTFORMATS>

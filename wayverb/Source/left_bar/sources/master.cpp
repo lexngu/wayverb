@@ -2,7 +2,7 @@
 #include "../list_config_item.h"
 
 #include "../vec3_property.h"
-#include "text_property.h"
+#include "../../text_property.h"
 
 #include "combined/model/source.h"
 

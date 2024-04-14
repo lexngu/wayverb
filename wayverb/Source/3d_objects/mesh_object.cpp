@@ -82,13 +82,13 @@ mesh_object::mesh_object(const std::shared_ptr<mesh_shader>& shader,
                                  geometry_,
                                  shader->get_attrib_location_v_position(),
                                  3,
-                                 GL_FLOAT);
+                                 juce::gl::GL_FLOAT);
 
     mglu::enable_and_bind_buffer(vao_,
                                  pressures_,
                                  shader->get_attrib_location_v_pressure(),
                                  1,
-                                 GL_FLOAT);
+                                 juce::gl::GL_FLOAT);
     ibo.bind();
 }
 
@@ -98,13 +98,13 @@ void mesh_object::set_pressures(const float* pressures, size_t num_pressures) {
 
 void mesh_object::do_draw(const glm::mat4& matrix) const {
     if (const auto shader = shader_.lock()) {
-        glDepthMask(GL_FALSE);
+        juce::gl::glDepthMask(juce::gl::GL_FALSE);
         auto s_shader = shader->get_scoped();
         shader->set_model_matrix(matrix);
 
         auto s_vao = vao_.get_scoped();
-        glDrawElements(GL_POINTS, ibo.size(), GL_UNSIGNED_INT, nullptr);
-        glDepthMask(GL_TRUE);
+        juce::gl::glDrawElements(juce::gl::GL_POINTS, ibo.size(), juce::gl::GL_UNSIGNED_INT, nullptr);
+        juce::gl::glDepthMask(juce::gl::GL_TRUE);
     }
 }
 

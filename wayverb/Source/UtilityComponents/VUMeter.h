@@ -10,12 +10,12 @@ public:
 
     void push_buffer(const juce::AudioSourceChannelInfo &buffer);
     void push_buffer(const juce::AudioSampleBuffer &buffer);
-    void push_buffer(const float **channel_data,
+    void push_buffer(const float* const* channel_data,
                      int num_channels,
                      int num_samples);
 
 private:
-    virtual void do_push_buffer(const float **channel_data,
+    virtual void do_push_buffer(const float* const* channel_data,
                                 int num_channels,
                                 int num_samples) = 0;
 };
@@ -38,7 +38,7 @@ public:
     void set_level(float f);
 
 private:
-    void do_push_buffer(const float **channel_data,
+    void do_push_buffer(const float* const* channel_data,
                         int num_channels,
                         int num_samples) override;
 
@@ -96,7 +96,7 @@ public:
 private:
     void on_change();
 
-    void do_push_buffer(const float **channel_data,
+    void do_push_buffer(const float* const* channel_data,
                         int num_channels,
                         int num_samples) override;
 
@@ -138,7 +138,7 @@ public:
 private:
     void on_change();
 
-    void do_push_buffer(const float **channel_data,
+    void do_push_buffer(const float* const* channel_data,
                         int num_channels,
                         int num_samples) override;
 

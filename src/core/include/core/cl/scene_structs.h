@@ -9,7 +9,7 @@ namespace core {
 /// If you change this, remember to update the cl_representation for bands_type
 constexpr auto simulation_bands = 8;
 
-using bands_type = detail::cl_vector_constructor_t<float, simulation_bands>;
+using bands_type = ::detail::cl_vector_constructor_t<float, simulation_bands>;
 
 template <>
 struct cl_representation<bands_type> final {
@@ -27,7 +27,7 @@ constexpr auto make_bands_type(float f) {
 template <size_t bands>
 struct alignas(1 << 5) surface {
     using bands_t = std::integral_constant<size_t, bands>;
-    using container = detail::cl_vector_constructor_t<float, bands>;
+    using container = ::detail::cl_vector_constructor_t<float, bands>;
     container absorption;
     container scattering;
 };

@@ -1,6 +1,6 @@
 #include "bottom_panel.h"
-#include "Application.h"
-#include "CommandIDs.h"
+#include "../Application.h"
+#include "../CommandIDs.h"
 
 namespace left_bar {
 

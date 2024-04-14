@@ -1,0 +1,8 @@
+windows.lo: \
+  /Users/alexander/git/wayverb-alemusica/dependencies/src/sndfile_external/src/windows.c \
+  /Users/alexander/git/wayverb-alemusica/dependencies/src/sndfile_external/src/sfconfig.h \
+  config.h
+
+/Users/alexander/git/wayverb-alemusica/dependencies/src/sndfile_external/src/sfconfig.h:
+
+config.h:

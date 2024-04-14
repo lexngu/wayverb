@@ -1,11 +1,13 @@
 #pragma once
 
+#include <optional>
+
 #include "core/cl/geometry_structs.h"
 #include "core/cl/triangle.h"
 
 #include "glm/fwd.hpp"
 
-#include <optional>
+
 #include <numeric>
 
 namespace wayverb {

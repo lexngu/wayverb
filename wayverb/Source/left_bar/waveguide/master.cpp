@@ -2,7 +2,7 @@
 
 #include "../../generic_slider_property.h"
 
-#include "Application.h"
+#include "../../Application.h"
 
 #include "utilities/string_builder.h"
 

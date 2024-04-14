@@ -8,4 +8,4 @@ clang_tidy_options=-DCMAKE_CXX_CLANG_TIDY:STRING="clang-tidy;-checks=-*,clang-*,
 
 #iwyu_options=-DCMAKE_CXX_INCLUDE_WHAT_YOU_USE:STRING=iwyu
 
-cmake -DCMAKE_OSX_ARCHITECTURES=x86_64 -DCMAKE_OSX_DEPLOYMENT_TARGET=10.14 .. && cmake --build .
+cmake -DCMAKE_FIND_FRAMEWORK=LAST -DCMAKE_OSX_DEPLOYMENT_TARGET=10.13 . && cmake --build .

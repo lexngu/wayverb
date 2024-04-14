@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include <cassert>
 
 class FileDropComponent : public juce::Component,
                           public juce::FileDragAndDropTarget,

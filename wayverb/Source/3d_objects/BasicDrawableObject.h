@@ -1,4 +1,5 @@
 #pragma once
+#include "../../JuceLibraryCode/JuceHeader.h"
 
 #include "core/orientation.h"
 
@@ -64,12 +65,12 @@ public:
                                      geometry,
                                      shader->get_attrib_location_v_position(),
                                      3,
-                                     GL_FLOAT);
+                                     juce::gl::GL_FLOAT);
         mglu::enable_and_bind_buffer(vao,
                                      colors,
                                      shader->get_attrib_location_v_color(),
                                      4,
-                                     GL_FLOAT);
+                                     juce::gl::GL_FLOAT);
         ibo.bind();
     }
 
@@ -118,5 +119,5 @@ private:
     mglu::static_vbo colors;
     mglu::static_ibo ibo;
 
-    GLuint mode{GL_LINES};
+    GLuint mode{juce::gl::GL_LINES};
 };

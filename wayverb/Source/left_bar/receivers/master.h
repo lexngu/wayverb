@@ -3,7 +3,7 @@
 #include "../editable_vector_list_box.h"
 #include "../list_config_item.h"
 
-#include "main_model.h"
+#include "../../main_model.h"
 
 namespace left_bar {
 namespace receivers {

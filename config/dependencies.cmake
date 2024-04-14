@@ -40,7 +40,7 @@ ExternalProject_Add(
 
 ExternalProject_Add(
     assimp_external
-    DOWNLOAD_COMMAND ${GIT_EXECUTABLE} clone --depth 1 --branch v5.0.1 https://github.com/assimp/assimp.git assimp_external
+    DOWNLOAD_COMMAND ${GIT_EXECUTABLE} clone --depth 1 --branch v5.1.6 https://github.com/assimp/assimp.git assimp_external
     CMAKE_ARGS ${GLOBAL_DEPENDENCY_CMAKE_FLAGS} -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR> -DASSIMP_BUILD_TESTS=OFF -DASSIMP_BUILD_STATIC_LIB=ON -DBUILD_SHARED_LIBS=OFF -DASSIMP_BUILD_ZLIB=ON -DCMAKE_CXX_VISIBILITY_PRESET=hidden -DCMAKE_VISIBILITY_INLINES_HIDDEN=ON
 )
 
@@ -171,8 +171,8 @@ ExternalProject_Add(
     CMAKE_ARGS ${GLOBAL_DEPENDENCY_CMAKE_FLAGS} -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
 )
 
-add_dependencies(modern_gl_utils_external glm_external)
+#add_dependencies(modern_gl_utils_external glm_external)
 
-add_library(modern_gl_utils UNKNOWN IMPORTED)
-add_dependencies(modern_gl_utils modern_gl_utils_external)
-set_property(TARGET modern_gl_utils PROPERTY IMPORTED_LOCATION ${DEPENDENCY_INSTALL_PREFIX}/lib/libmodern_gl_utils.a)
+#add_library(modern_gl_utils UNKNOWN IMPORTED)
+#add_dependencies(modern_gl_utils modern_gl_utils_external)
+#set_property(TARGET modern_gl_utils PROPERTY IMPORTED_LOCATION ${DEPENDENCY_INSTALL_PREFIX}/lib/libmodern_gl_utils.a)

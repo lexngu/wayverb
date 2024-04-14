@@ -56,7 +56,7 @@ void BareBonesVUMeter::vu_meter_levels_changed(DualVUMeter*, float, float) {
     repaint();
 }
 
-void BareBonesVUMeter::do_push_buffer(const float** channel_data,
+void BareBonesVUMeter::do_push_buffer(const float* const* channel_data,
                                       int num_channels,
                                       int num_samples) {
     vu_meter.push_buffer(channel_data, num_channels, num_samples);

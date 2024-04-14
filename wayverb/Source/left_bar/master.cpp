@@ -1,5 +1,5 @@
 #include "master.h"
-#include "AngularLookAndFeel.h"
+#include "../UtilityComponents/AngularLookAndFeel.h"
 
 #include "materials/master.h"
 #include "raytracer/master.h"

@@ -1,0 +1,12 @@
+prefix=/Users/alexander/git/wayverb-alemusica/dependencies
+exec_prefix=/Users/alexander/git/wayverb-alemusica/dependencies
+libdir=/Users/alexander/git/wayverb-alemusica/dependencies/lib
+includedir=/Users/alexander/git/wayverb-alemusica/dependencies/include
+
+Name: IT++
+Description: IT++ is a C++ library of mathematical, signal processing, speech processing, and communications classes and functions
+Version: 4.3.1
+URL: http://itpp.sourceforge.net/
+Libs: -L${libdir} -litpp_static
+Libs.private:/usr/local/lib/libfftw3.dylib /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/Accelerate.framework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/lib/libblas.tbd
+Cflags: -I${includedir} -O3 -DNDEBUG

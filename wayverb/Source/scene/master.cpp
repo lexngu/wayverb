@@ -1,13 +1,13 @@
 #include "master.h"
 
-#include "main_model.h"
+#include "../main_model.h"
 
 #include "controller.h"
 #include "view.h"
 
-#include "AngularLookAndFeel.h"
-#include "Application.h"
-#include "CommandIDs.h"
+#include "../UtilityComponents/AngularLookAndFeel.h"
+#include "../Application.h"
+#include "../CommandIDs.h"
 
 #include "../UtilityComponents/generic_renderer.h"
 

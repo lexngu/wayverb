@@ -257,31 +257,31 @@ constexpr auto map(const T& t, const Op& op) {
 
 //  other reductions ///////////////////////////////////////////////////////////
 
-template <typename T, detail::enable_if_is_vector_t<T, int> = 0>
+template <typename T, ::detail::enable_if_is_vector_t<T, int> = 0>
 constexpr auto sum(const T& t) {
-    return detail::accumulate(t, std::plus<>{});
+    return ::detail::accumulate(t, std::plus<>{});
 }
 
-template <typename T, detail::enable_if_is_vector_t<T, int> = 0>
+template <typename T, ::detail::enable_if_is_vector_t<T, int> = 0>
 constexpr auto product(const T& t) {
-    return detail::accumulate(t, std::multiplies<>{});
+    return ::detail::accumulate(t, std::multiplies<>{});
 }
 
-template <typename T, detail::enable_if_is_vector_t<T, int> = 0>
+template <typename T, ::detail::enable_if_is_vector_t<T, int> = 0>
 constexpr auto mean(const T& t) {
-    return sum(t) / detail::components_v<T>;
+    return sum(t) / ::detail::components_v<T>;
 }
 
 //  logical reductions /////////////////////////////////////////////////////////
 
-template <typename T, detail::enable_if_is_vector_t<T, int> = 0>
+template <typename T, ::detail::enable_if_is_vector_t<T, int> = 0>
 constexpr bool all(const T& t) {
-    return detail::accumulate(t, std::logical_and<>{});
+    return ::detail::accumulate(t, std::logical_and<>{});
 }
 
-template <typename T, detail::enable_if_is_vector_t<T, int> = 0>
+template <typename T, ::detail::enable_if_is_vector_t<T, int> = 0>
 constexpr bool any(const T& t) {
-    return detail::accumulate(t, std::logical_or<>{});
+    return ::detail::accumulate(t, std::logical_or<>{});
 }
 
 namespace detail {
@@ -304,79 +304,79 @@ struct min_functor final {
 
 }  // namespace detail
 
-template <typename T, detail::enable_if_is_vector_t<T, int> = 0>
+template <typename T, ::detail::enable_if_is_vector_t<T, int> = 0>
 constexpr auto min_element(const T& t) {
-    return detail::accumulate(t, detail::min_functor{});
+    return ::detail::accumulate(t, ::detail::min_functor{});
 }
 
-template <typename T, detail::enable_if_is_vector_t<T, int> = 0>
+template <typename T, ::detail::enable_if_is_vector_t<T, int> = 0>
 constexpr auto max_element(const T& t) {
-    return detail::accumulate(t, detail::max_functor{});
+    return ::detail::accumulate(t, ::detail::max_functor{});
 }
 
 //  misc ///////////////////////////////////////////////////////////////////////
 
 template <typename T,
-          size_t components = detail::components_v<T>,
-          detail::enable_if_is_vector_t<T, int> = 0>
+          size_t components = ::detail::components_v<T>,
+          ::detail::enable_if_is_vector_t<T, int> = 0>
 constexpr auto isnan(const T& t) {
-    return detail::map(t, [](auto i) { return std::isnan(i); });
+    return ::detail::map(t, [](auto i) { return std::isnan(i); });
 }
 
 template <typename T,
-          size_t components = detail::components_v<T>,
-          detail::enable_if_is_vector_t<T, int> = 0>
+          size_t components = ::detail::components_v<T>,
+          ::detail::enable_if_is_vector_t<T, int> = 0>
 constexpr auto isinf(const T& t) {
-    return detail::map(t, [](auto i) { return std::isinf(i); });
+    return ::detail::map(t, [](auto i) { return std::isinf(i); });
 }
 
-template <typename T, detail::enable_if_is_vector_t<T, int> = 0>
+template <typename T, ::detail::enable_if_is_vector_t<T, int> = 0>
 inline auto sqrt(const T& t) {
-    return detail::map(t, [](auto i) { return std::sqrt(i); });
+    return ::detail::map(t, [](auto i) { return std::sqrt(i); });
 }
 
-template <typename T, detail::enable_if_is_vector_t<T, int> = 0>
+template <typename T, ::detail::enable_if_is_vector_t<T, int> = 0>
 inline auto log(const T& t) {
-    return detail::map(t, [](auto i) { return std::log(i); });
+    return ::detail::map(t, [](auto i) { return std::log(i); });
 }
 
-template <typename T, detail::enable_if_is_vector_t<T, int> = 0>
+template <typename T, ::detail::enable_if_is_vector_t<T, int> = 0>
 inline auto abs(const T& t) {
-    return detail::map(t, [](auto i) { return std::abs(i); });
+    return ::detail::map(t, [](auto i) { return std::abs(i); });
 }
 
 template <typename T,
           typename U,
-          detail::enable_if_any_is_vector_t<int, T, U> = 0>
+          ::detail::enable_if_any_is_vector_t<int, T, U> = 0>
 inline auto copysign(const T& t, const U& u) {
-    return detail::zip(
+    return ::detail::zip(
             t, u, [](auto i, auto j) { return std::copysign(i, j); });
 }
 
 template <typename T,
           typename U,
-          detail::enable_if_any_is_vector_t<int, T, U> = 0>
+          ::detail::enable_if_any_is_vector_t<int, T, U> = 0>
 inline auto pow(const T& t, const U& u) {
-    return detail::zip(t, u, [](auto i, auto j) { return std::pow(i, j); });
+    return ::detail::zip(t, u, [](auto i, auto j) { return std::pow(i, j); });
 }
 
 template <typename T,
           typename U,
-          detail::enable_if_any_is_vector_t<int, T, U> = 0>
+          ::detail::enable_if_any_is_vector_t<int, T, U> = 0>
 inline auto max(const T& t, const U& u) {
-    return detail::zip(t, u, detail::max_functor{});
+    return ::detail::zip(t, u, ::detail::max_functor{});
 }
 
 template <typename T,
           typename U,
-          detail::enable_if_any_is_vector_t<int, T, U> = 0>
+          ::detail::enable_if_any_is_vector_t<int, T, U> = 0>
 inline auto min(const T& t, const U& u) {
-    return detail::zip(t, u, detail::min_functor{});
+    return ::detail::zip(t, u, ::detail::min_functor{});
 }
 
 template <size_t Components, typename Input>
 constexpr auto construct_vector(Input input) {
-    detail::cl_vector_constructor_t<Input, Components> ret{};
+    ::detail::cl_vector_constructor_t<Input, Components> ret{};
     for (auto& i : ret.s) {
         i = input;
     }
@@ -387,108 +387,108 @@ constexpr auto construct_vector(Input input) {
 
 template <typename T,
           typename U,
-          detail::enable_if_any_is_vector_t<int, T, U> = 0>
+          ::detail::enable_if_any_is_vector_t<int, T, U> = 0>
 constexpr auto operator==(const T& a, const U& b) {
-    return detail::accumulate(detail::zip(a, b, std::equal_to<>{}),
+    return ::detail::accumulate(::detail::zip(a, b, std::equal_to<>{}),
                               std::logical_and<>{});
 }
 
-template <typename T, detail::enable_if_is_vector_t<T, int> = 0>
+template <typename T, ::detail::enable_if_is_vector_t<T, int> = 0>
 constexpr auto operator!(const T& a) {
-    return detail::map(a, std::logical_not<>{});
+    return ::detail::map(a, std::logical_not<>{});
 }
 
 template <typename T,
           typename U,
-          detail::enable_if_any_is_vector_t<int, T, U> = 0>
+          ::detail::enable_if_any_is_vector_t<int, T, U> = 0>
 constexpr auto operator!=(const T& a, const U& b) {
     return !(a == b);
 }
 
 template <typename T,
           typename U,
-          detail::enable_if_any_is_vector_t<int, T, U> = 0>
+          ::detail::enable_if_any_is_vector_t<int, T, U> = 0>
 constexpr auto operator<(const T& a, const U& b) {
-    return detail::zip(a, b, std::less<>{});
+    return ::detail::zip(a, b, std::less<>{});
 }
 
 template <typename T,
           typename U,
-          detail::enable_if_any_is_vector_t<int, T, U> = 0>
+          ::detail::enable_if_any_is_vector_t<int, T, U> = 0>
 constexpr auto operator<=(const T& a, const U& b) {
-    return detail::zip(a, b, std::less_equal<>{});
+    return ::detail::zip(a, b, std::less_equal<>{});
 }
 
 //  arithmetic ops /////////////////////////////////////////////////////////////
 
-template <typename T, typename U, detail::enable_if_is_vector_t<T, int> = 0>
+template <typename T, typename U, ::detail::enable_if_is_vector_t<T, int> = 0>
 constexpr auto& operator+=(T& a, const U& b) {
-    return detail::inplace_zip(a, b, std::plus<>{});
+    return ::detail::inplace_zip(a, b, std::plus<>{});
 }
 
-template <typename T, typename U, detail::enable_if_is_vector_t<T, int> = 0>
+template <typename T, typename U, ::detail::enable_if_is_vector_t<T, int> = 0>
 constexpr auto& operator-=(T& a, const U& b) {
-    return detail::inplace_zip(a, b, std::minus<>{});
+    return ::detail::inplace_zip(a, b, std::minus<>{});
 }
 
-template <typename T, typename U, detail::enable_if_is_vector_t<T, int> = 0>
+template <typename T, typename U, ::detail::enable_if_is_vector_t<T, int> = 0>
 constexpr auto& operator*=(T& a, const U& b) {
-    return detail::inplace_zip(a, b, std::multiplies<>{});
+    return ::detail::inplace_zip(a, b, std::multiplies<>{});
 }
 
-template <typename T, typename U, detail::enable_if_is_vector_t<T, int> = 0>
+template <typename T, typename U, ::detail::enable_if_is_vector_t<T, int> = 0>
 constexpr auto& operator/=(T& a, const U& b) {
-    return detail::inplace_zip(a, b, std::divides<>{});
+    return ::detail::inplace_zip(a, b, std::divides<>{});
 }
 
-template <typename T, typename U, detail::enable_if_is_vector_t<T, int> = 0>
+template <typename T, typename U, ::detail::enable_if_is_vector_t<T, int> = 0>
 constexpr auto& operator%=(T& a, const U& b) {
-    return detail::inplace_zip(a, b, std::modulus<>{});
+    return ::detail::inplace_zip(a, b, std::modulus<>{});
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 
 template <typename T,
           typename U,
-          detail::enable_if_any_is_vector_t<int, T, U> = 0>
+          ::detail::enable_if_any_is_vector_t<int, T, U> = 0>
 constexpr auto operator+(const T& a, const U& b) {
-    return detail::zip(a, b, std::plus<>{});
+    return ::detail::zip(a, b, std::plus<>{});
 }
 
 template <typename T,
           typename U,
-          detail::enable_if_any_is_vector_t<int, T, U> = 0>
+          ::detail::enable_if_any_is_vector_t<int, T, U> = 0>
 constexpr auto operator-(const T& a, const U& b) {
-    return detail::zip(a, b, std::minus<>{});
+    return ::detail::zip(a, b, std::minus<>{});
 }
 
 template <typename T,
           typename U,
-          detail::enable_if_any_is_vector_t<int, T, U> = 0>
+          ::detail::enable_if_any_is_vector_t<int, T, U> = 0>
 constexpr auto operator*(const T& a, const U& b) {
-    return detail::zip(a, b, std::multiplies<>{});
+    return ::detail::zip(a, b, std::multiplies<>{});
 }
 
 template <typename T,
           typename U,
-          detail::enable_if_any_is_vector_t<int, T, U> = 0>
+          ::detail::enable_if_any_is_vector_t<int, T, U> = 0>
 constexpr auto operator/(const T& a, const U& b) {
-    return detail::zip(a, b, std::divides<>{});
+    return ::detail::zip(a, b, std::divides<>{});
 }
 
 template <typename T,
           typename U,
-          detail::enable_if_any_is_vector_t<int, T, U> = 0>
+          ::detail::enable_if_any_is_vector_t<int, T, U> = 0>
 constexpr auto operator%(const T& a, const U& b) {
-    return detail::zip(a, b, std::modulus<>{});
+    return ::detail::zip(a, b, std::modulus<>{});
 }
 
-template <typename T, detail::enable_if_is_vector_t<T, int> = 0>
+template <typename T, ::detail::enable_if_is_vector_t<T, int> = 0>
 constexpr auto operator+(const T& a) {
     return a;
 }
 
-template <typename T, detail::enable_if_is_vector_t<T, int> = 0>
+template <typename T, ::detail::enable_if_is_vector_t<T, int> = 0>
 constexpr auto operator-(const T& a) {
-    return detail::map(a, std::negate<>{});
+    return ::detail::map(a, std::negate<>{});
 }

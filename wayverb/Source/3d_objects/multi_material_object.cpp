@@ -34,13 +34,13 @@ multi_material_object::multi_material_object(
                                      geometry_,
                                      shader->get_attrib_location_v_position(),
                                      3,
-                                     GL_FLOAT);
+                                     juce::gl::GL_FLOAT);
         mglu::check_for_gl_error();
         mglu::enable_and_bind_buffer(vao,
                                      colors_,
                                      shader->get_attrib_location_v_color(),
                                      4,
-                                     GL_FLOAT);
+                                     juce::gl::GL_FLOAT);
         mglu::check_for_gl_error();
     };
 
@@ -59,7 +59,7 @@ void multi_material_object::do_draw(const glm::mat4 &model_matrix) const {
                 const auto s_shader = shader->get_scoped();
                 shader->set_model_matrix(model_matrix);
                 const auto s_vao = fill_vao_.get_scoped();
-                glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+                juce::gl::glPolygonMode(juce::gl::GL_FRONT_AND_BACK, juce::gl::GL_FILL);
                 section.draw(model_matrix);
             }
 
@@ -68,7 +68,7 @@ void multi_material_object::do_draw(const glm::mat4 &model_matrix) const {
                 const auto s_shader = shader->get_scoped();
                 shader->set_model_matrix(model_matrix);
                 const auto s_vao = wire_vao_.get_scoped();
-                glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+                juce::gl::glPolygonMode(juce::gl::GL_FRONT_AND_BACK, juce::gl::GL_LINE);
                 section.draw(model_matrix);
             }
         }
@@ -92,7 +92,7 @@ multi_material_object::single_material_section::single_material_section(
 void multi_material_object::single_material_section::do_draw(
         const glm::mat4 &) const {
     ibo_.bind();
-    glDrawElements(GL_TRIANGLES, ibo_.size(), GL_UNSIGNED_INT, nullptr);
+            juce::gl::glDrawElements(juce::gl::GL_TRIANGLES, ibo_.size(), juce::gl::GL_UNSIGNED_INT, nullptr);
 }
 
 size_t multi_material_object::single_material_section::get_material_index()

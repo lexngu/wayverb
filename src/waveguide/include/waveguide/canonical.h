@@ -15,6 +15,7 @@
 #include "hrtf/multiband.h"
 
 #include <cmath>
+#include <optional>
 
 /// \file canonical.h
 /// The waveguide algorithm in waveguide.h is modular, in that

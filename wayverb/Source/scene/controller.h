@@ -1,6 +1,7 @@
 #pragma once
+#include "../JuceLibraryCode/JuceHeader.h"
 
-#include "main_model.h"
+#include "../main_model.h"
 
 #include "raytracer/cl/reflection.h"
 
@@ -9,7 +10,6 @@
 
 #include "glm/glm.hpp"
 
-#include "../JuceLibraryCode/JuceHeader.h"
 
 namespace scene {
 
